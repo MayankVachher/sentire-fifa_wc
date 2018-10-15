@@ -1,0 +1,128 @@
+.fill {
+  fill: #eef8fb;
+  stroke: #333;
+  stroke-width: 0.5px;
+}
+
+.fill_globe {
+  fill: #eef8fb;
+  stroke: #333;
+  stroke-width: 0.5px;
+}
+
+.globe_country, .flat_country {
+  fill: #ddd;
+  stroke: #636363;
+  stroke-width: 0.5px;
+  stroke-linejoin: round;
+}
+
+.title {
+  padding-top: 30px;
+}
+
+.graticule {
+  fill: none;
+  stroke: #000;
+  stroke-opacity: .3;
+  stroke-width: .5px;
+}
+
+.graticule-outline {
+  fill: none;
+  stroke: #333;
+  stroke-width: 1.5px;
+}
+
+text {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  text-anchor: middle;
+}
+
+.ticks, .slider_labels {
+    font-size: 10px;
+}
+
+.label {
+  font-size: 12px;
+}
+
+.track,
+.track-inset,
+.track-overlay {
+  stroke-linecap: round;
+}
+
+.track {
+  stroke: #000;
+  stroke-opacity: 0.3;
+  stroke-width: 10px;
+}
+
+.track-inset {
+  stroke: #dcdcdc;
+  stroke-width: 8px;
+}
+
+.track-overlay {
+  pointer-events: stroke;
+  stroke-width: 50px;
+  stroke: transparent;
+  cursor: crosshair;
+}
+
+.handle {
+  fill: #fff;
+  stroke: #000;
+  stroke-opacity: 0.5;
+  stroke-width: 1.25px;
+}
+
+#play-button {
+  background: #f08080;
+  border-radius: 3px;
+  border: none;
+  color: white;
+  margin: 0;
+  padding: 0 12px;
+}
+
+#play-button:hover {
+  background-color: #696969;
+}
+
+#legend {
+  padding-top: 20px;
+}
+
+.axis path, .axis line {
+	fill: none;
+	stroke: none; /*black;*/
+	shape-rendering: crispEdges;
+}
+
+.axis .tick text {
+ 	fill: #222;
+	font-size: 10pt;
+  font-weight: lighter;
+}
+
+.legendTitle {
+	font-size: 18px;
+	fill: #4F4F4F;
+}
+
+.tooltip{
+  background-color:rgba(0,0,0,0.5);
+  color:#fff;
+  padding: 10px;
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  border-radius:10px;
+}
+
+body {
+  overflow-x: scroll;
+}

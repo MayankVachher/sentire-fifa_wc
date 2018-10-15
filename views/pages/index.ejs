@@ -1,66 +1,92 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <% include ../partials/header.ejs %>
-</head>
-
-<body>
-
-  <% include ../partials/nav.ejs %>
-
-<div class="jumbotron text-center">
-  <div class="container">
-    <a href="/" class="lang-logo">
-      <img src="/lang-logo.png">
-    </a>
-    <h1>Getting Started with Node on Heroku</h1>
-    <p>This is a sample Node application deployed to Heroku. It's a reasonably simple app - but a good foundation for understanding how to get the most out of the Heroku platform.</p>
-    <a type="button" class="btn btn-lg btn-default" href="https://devcenter.heroku.com/articles/getting-started-with-nodejs"><span class="glyphicon glyphicon-flash"></span> Getting Started with Node</a>
-    <a type="button" class="btn btn-lg btn-primary" href="https://github.com/heroku/node-js-getting-started"><span class="glyphicon glyphicon-download"></span> Source on GitHub</a>
-  </div>
-</div>
-<div class="container">
-  <div class="alert alert-info text-center" role="alert">
-    To deploy your own copy, and learn the fundamentals of the Heroku platform, head over to the <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs" class="alert-link">Getting Started with Node on Heroku</a> tutorial.
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-md-6">
-      <h3><span class="glyphicon glyphicon-info-sign"></span> How this sample app works</h3>
-      <ul>
-        <li>This app was deployed to Heroku, either using Git or by using <a href="https://github.com/heroku/node-js-getting-started">Heroku Button</a> on the repository.</li>
-
-        <li>When Heroku received the source code, it fetched all the dependencies in the <a href="https://github.com/heroku/node-js-getting-started/blob/master/package.json">package.json</a>, creating a deployable slug.</li>
-        <li>The platform then spins up a dyno, a lightweight container that provides an isolated environment in which the slug can be mounted and executed.</li>
-        <li>You can scale your app, manage it, and deploy over <a href="https://addons.heroku.com/">150 add-on services</a>, from the Dashboard or CLI.</li>
-      </ul>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>FIFA World Cup Finals</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <link rel="stylesheet" href="/stylesheets/world_map.css">
+  </head>
+  <body>
+    <div class="modal is-active" id="openingModal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">FIFA World Cup Finals Sentiment Visualization</p>
+          <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body content">
+          <h1 class="title is-4">About</h1>
+          Geographic dispersion of tweets by sentiment for the world cup finals between France and Croatia, one tweet at a time. Push 'Play' to see tweets streaming or click on timeline for a snapshot
+          <h1 class="title is-4">Motivation/Intent</h1>
+          To understand the sentiment of the world on a more broader level through the social media landscape, particularly twitter.
+          <h1 class="title is-4">Data collected</h1>
+          10,000 posts were randomly sampled from the twitter stream of "#WorldCupFinal" on July 14-15, 2018. All Neutral posts in the 10,000 posts sample were removed as well.
+        </section>
+      </div>
     </div>
-    <div class="col-md-6">
-      <h3><span class="glyphicon glyphicon-link"></span> Next Steps</h3>
-      <ul>
-        <li>If you are following the <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs">Getting Started</a> guide, then please head back to the tutorial and follow the next steps!</li>
-        <li>If you deployed this app by deploying the Heroku Button, then in a command line shell, run:</li>
-        <ul>
-          <li><code>git clone https://github.com/heroku/node-js-getting-started.git</code> - this will create a local copy of the source code for the app</li>
-          <li><code>cd node-js-getting-started</code> - change directory into the local source code repository</li>
-          <li><code>heroku git:remote -a &lt;your-app-name></code> - associate the Heroku app with the repository</li>
-          <li>You'll now be set up to run the app locally, or <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs#push-local-changes">deploy changes</a> to Heroku</li>
-        </ul>
-      </ul>
-      <h3><span class="glyphicon glyphicon-link"></span> Helpful Links</h3>
-      <ul>
-        <li><a href="https://www.heroku.com/home">Heroku</a></li>
-        <li><a href="https://devcenter.heroku.com/">Heroku Dev Center</a></li>
-        <li><a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs">Getting Started with Node on Heroku</a></li>
-        <li><a href="https://devcenter.heroku.com/articles/deploying-nodejs">Deploying Node Apps on Heroku</a></li>
-      </ul>
-    </div>
-  </div> <!-- row -->
-   <div class="alert alert-info text-center" role="alert">
-    Please do work through the Getting Started guide, even if you do know how to build such an application.  The guide covers the basics of working with Heroku, and will familiarize you with all the concepts you need in order to build and deploy your own apps.
-  </div>
-</div>
 
+    <section class="hero is-fullheight">
+      <div class="hero-head">
+        <div class="container is-fluid">
+          <div class="columns">
+            <div class="column is-8">
+              <h1 class="title">FIFA World Cup Finals Sentiment</h1>
+              <h3 class="subtitle">
+                <div>
+                Mayank Vachher
+                </div>
+                <div>
+                  <a href="mailto:mayankv0207@gmail.com">mayankv0207@gmail.com</a>
+                </div>
+              </h3>
+            </div>
+            <div class="column" id="legend_container">
+              <svg id="legend" class="is-pulled-right" height="100"></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-body">
+        <div class="container is-fluid">
+          <div class="columns is-vcentered">
+            <div class="column is-1 has-text-centered">
+              <button class="button is-info" id="launch_modal">Info</button>
+              <button class="button is-normal" id="play-button">Play</button>
+            </div>
+            <div class="column" id="slider_container">
+              <svg id="slider"></svg>
+            </div>
+          </div>
 
-</body>
+          <div class="columns">
+              <div class="column" id="globe_container">
+                <div class="has-text-centered">
+                  <h1 class="title" id="country_loc"></h1>
+                  <h2 class="subtitle" id="tod"></h2>
+                </div>
+                <svg height="600" id="globe" class="fill"></svg>
+              </div>
+              <div class="column">
+                  <div id="flat_container">
+                    <svg height="400" id="flat" class="fill"></svg>
+                  </div>
+                  <div>
+                    <div id="tweet"></div>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://unpkg.com/topojson@3"></script>
+    <script src="https://platform.twitter.com/widgets.js"></script>
+    <script src="https://d3js.org/d3-color.v1.min.js"></script>
+    <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
+    <script src="https://unpkg.com/d3-simple-slider@0.2.1/build/d3-simple-slider.js"></script>
+    <script type="text/javascript" src="/js/tooltip.js"></script>
+    <script type="text/javascript" src="/js/world_map_flat.js"></script>
+  </body>
 </html>
